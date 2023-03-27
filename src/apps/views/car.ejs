@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('head'); -%>
+		<link rel="stylesheet" href="/static/css/car.css" />
+	</head>
+    <body>
+        <header class="header">
+        </header>
+        <div class="content">
+        </div>
+        <a href="/" class="control">
+            <img src="/static/images/back.png" alt="">
+            Trở lại
+        </a>
+        <div href="/" class="control">
+            <img src="/static/images/home.png" alt="" class="mb-2">
+            Home
+            <span class="symbol">/</span>
+            <span class="desc">Quản lý ra vào</span>
+        </div>
+
+        <div class="title">Danh sách xe ra vào</div>
+
+        <div class="tbl">
+            <table data-toolbar="#toolbar" data-toggle="table">
+                <thead>
+                    <tr>
+                        <th data-sortable="true">Hình ảnh</th>
+                        <th data-sortable="true">Tên bãi xe</th>
+                        <th data-sortable="true">Mã Thẻ</th>
+                        <th data-sortable="true">Thời gian vào</th>
+                        <th data-sortable="true">Thời gian ra</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>111</td>
+                        <td>Lac Hong</td>
+                        <td>CS1</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                        <td>Dong Nai</td>
+                        <td>CS2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <a href="" class="export-ex">
+            Xuất file Excel
+        </a>
+        </div>
+    </body>
+</html>

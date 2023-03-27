@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('head'); -%>
+		<link rel="stylesheet" href="/static/css/parking-list.css" />
+	</head>
+    <body>
+        <header class="header">
+        </header>
+        <div class="content">
+        </div>
+        <a href="/" class="control">
+            <img src="/static/images/back.png" alt="">
+            Trở lại
+        </a>
+        <div href="/" class="control">
+            <img src="/static/images/home.png" alt="" class="mb-2">
+            Home
+            <span class="symbol">/</span>
+            <span class="desc">Quản lý bãi xe</span>
+        </div>
+
+        <div class="title">Danh sách bãi xe</div>
+
+        <div class="tbl">
+            <table data-toolbar="#toolbar" data-toggle="table">
+                <thead>
+                    <tr>
+                        <th data-sortable="true">STT</th>
+                        <th data-sortable="true">Tên bãi xe</th>
+                        <th data-sortable="true">Tên vị trí</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let i = 0 %> <% for ( let park of park_list) {%>
+                        <tr>
+                            <td><%= ++i %></td>
+                            <td><%=park.name%></td>
+                            <td><%=park.address%></td>
+                        </tr>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+        <a href="" class="export-ex">
+            Xuất file Excel
+        </a>
+        </div>
+    </body>
+</html>

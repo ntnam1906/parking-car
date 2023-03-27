@@ -1,0 +1,102 @@
+*{
+	margin:0;
+	padding:0;
+	font-family: Inter;
+	font-size:13px;
+	color:#333;
+}
+    
+body{
+	background:#E7ECF4;
+    width: 1440px;
+    height: 1024px;
+}	
+header {
+    height: 468.81px;
+    position: relative;
+}
+.content {
+    height: 555.19px;
+    background-color: #3F88DF;
+}
+.logo {
+    width: 455px;
+    height: 286.8px;
+    position: absolute;
+    top:120px;
+    left: 479px;
+}
+.btn {
+    border-radius: 20px;
+    width: 280px;
+    height: 100px;
+    background-color: #58D8B9;
+    position: absolute;
+    top: 804px;
+    left: 566px;
+    font-weight: 700;
+    font-size: 32px;
+}
+.user-text{
+    position: absolute;
+    width: 161px;
+    height: 39px;
+    left: 267px;
+    top: 565px;
+
+    font-weight: 700;
+    font-size: 32px;
+    color: #FFFFFF;
+}
+.user-pass{
+    position: absolute;
+    width: 161px;
+    height: 39px;
+    left: 267px;
+    top: 707px;
+
+    font-weight: 700;
+    font-size: 32px;
+    color: #FFFFFF;
+}
+.form-control {
+    width: 568px;
+    height: 85.26px;
+
+    background: #FFFFFF;
+    border-radius: 25px;
+    font-size: 32px;
+}
+.us{
+    position: absolute;
+    left: 458px;
+    top: 553.11px;
+}
+.ps {
+    position: absolute;
+    left: 458px;
+    top: 683px;
+}
+.forget {
+    font-weight: 700;
+    font-size: 32px;
+    color: #FFFFFF;
+    position: absolute;
+    top: 930px;
+    left: 800px;
+    text-decoration: none;
+}
+.no-reg {
+    font-weight: 700;
+    font-size: 32px;
+    color: #FFFFFF;
+    position: absolute;
+    top: 930px;
+    left: 450px;
+    text-decoration: none;
+}
+.alert-danger {
+    font-size:24px ;
+    font-weight: 600;
+    padding-left: 50px;
+}

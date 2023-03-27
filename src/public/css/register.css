@@ -1,0 +1,126 @@
+*{
+	margin:0;
+	padding:0;
+	font-family: Inter;
+	font-size:13px;
+	color:#333;
+}
+    
+body{
+	background:#E7ECF4;
+    width: 1440px;
+    height: 1240px;
+}	
+header {
+    height: 468.81px;
+    position: relative;
+}
+.content {
+    height: 771.19px;
+    background-color: #3F88DF;
+}
+.logo {
+    width: 455px;
+    height: 286.8px;
+    position: absolute;
+    top:120px;
+    left: 479px;
+}
+.btn {
+    border-radius: 20px;
+    width: 280px;
+    height: 100px;
+    background-color: #58D8B9;
+    position: absolute;
+    top: 1090px;
+    left: 580px;
+    font-weight: 700;
+    font-size: 32px;
+}
+.user-text{
+    position: absolute;
+    width: 161px;
+    height: 39px;
+    left: 152px;
+    top: 572px;
+
+    font-weight: 700;
+    font-size: 32px;
+    color: #FFFFFF;
+}
+.user-name {
+    position: absolute;
+    width: 161px;
+    height: 39px;
+    left: 152px;
+    top: 705px;
+
+    font-weight: 700;
+    font-size: 32px;
+    color: #FFFFFF;
+}
+.user-pass{
+    position: absolute;
+    width: 287px;
+    height: 39px;
+    left: 152px;
+    top: 834px;
+
+    font-weight: 700;
+    font-size: 32px;
+    color: #FFFFFF;
+}
+.user-re-pass{
+    position: absolute;
+    width: 287px;
+    height: 39px;
+    left: 152px;
+    top: 960px;
+
+    font-weight: 700;
+    font-size: 32px;
+    color: #FFFFFF;
+}
+.form-control {
+    width: 568px;
+    height: 85.26px;
+
+    background: #FFFFFF;
+    border-radius: 25px;
+    font-size: 32px;
+}
+.ns {
+    position: absolute;
+    left: 458px;
+    top: 552px;
+}
+.us{
+    position: absolute;
+    left: 458px;
+    top: 681px;
+}
+.ps {
+    position: absolute;
+    left: 458px;
+    top: 810px;
+}
+.re-ps {
+    position: absolute;
+    left: 458px;
+    top: 940px;
+}
+.alert-danger {
+    font-size:24px ;
+    font-weight: 600;
+    padding-left: 50px;
+}
+.alert-success {
+    font-size:24px ;
+    font-weight: 600;
+    padding-left: 50px;
+}
+.login-success {
+    text-decoration: none;
+    font-size:24px ;
+    font-weight: 600;
+}
