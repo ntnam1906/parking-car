@@ -1,5 +1,7 @@
 const UsersModel = require('../models/users');
 const config = require('config');
+const excel = require('exceljs');
+const fs = require('fs');
 
 const indexUser = async (req, res) => {
     const pagination = {
@@ -105,11 +107,59 @@ const updateUser = async (req, res) => {
     }
 
 }
+const exportEx = async (req, res) => {
+    // Tạo workbook mới
+    const workbook = new excel.Workbook();
+    
+    // Tạo worksheet mới
+    const worksheet = workbook.addWorksheet('Data');
+    worksheet.columns = [
+        { header: 'Tên', key: 'name', width: 30 },
+        { header: 'User_name', key: 'username', width: 50 },
+        { header: 'Mật khẩu', key: 'password', width: 15 },
+        { header: 'Vai trò', key: 'role', width: 15 }
+    ];
+    try {
+        UsersModel.find()
+      .then(data => {
+        data.forEach(item => {
+          worksheet.addRow({
+            name: item.full_name,
+            username: item.user_name,
+            password: item.password,
+            role: item.role
+          });
+        });
+        
+        // Lưu workbook ra file excel
+        const filename = 'users.xlsx';
+        workbook.xlsx.writeFile(filename)
+          .then(() => {
+            console.log(`Excel file "${filename}" has been created`);
+            
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+      res.redirect('/account')
+    }
+    catch (error) {
+        res.render('account', {
+            error: error.message,
+            message: null,
+        })
+    }
+}
 module.exports = {
     indexUser: indexUser,
     deleteUser: deleteUser,
     addUser: addUser,
     newUser: newUser,
     editUser: editUser,
-    updateUser: updateUser
+    updateUser: updateUser,
+    exportEx: exportEx
 }

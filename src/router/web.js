@@ -17,13 +17,16 @@ router.get('/account', UserController.indexUser)
 router.get('/account/add', UserController.addUser)
 router.get('/account/delete/:id', UserController.deleteUser)
 router.get('/account/edit/:id', UserController.editUser)
+router.get('/account/export', UserController.exportEx)
 router.get('/parking-list', ParkController.indexPark)
 router.get('/parking-list/add', ParkController.addPark)
 router.get('/parking-list/delete/:id', ParkController.deletePark)
 router.get('/parking-list/edit/:id', ParkController.editPark)
+router.get('/parking-list/export', ParkController.exportEx)
 router.get('/card', CardController.indexCard)
 router.get('/card/add-card', CardController.addCards)
 router.get('/card/remove-card', CardController.getRemoveCard)
+router.get('/card/export', CardController.exportEx)
 router.get('/car', (res, req) => {
     if(loggedIn) {
         req.render('car');

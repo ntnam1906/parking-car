@@ -1,6 +1,8 @@
 const CardsModel = require('../models/cards');
 const UsersModel = require('../models/users');
 const moment = require('moment');
+const excel = require('exceljs');
+const fs = require('fs');
 
 const currentDateTime = moment().format('YYYY-MM-DD HH:mm:ss');
 const now = new Date();
@@ -99,11 +101,60 @@ const deleteCard = async (req, res) => {
         console.log(error);
     }
 }
-
+const exportEx = async (req, res) => {
+    // Tạo workbook mới
+    const workbook = new excel.Workbook();
+    
+    // Tạo worksheet mới
+    const worksheet = workbook.addWorksheet('Data');
+    worksheet.columns = [
+        { header: 'Mã thẻ', key: 'id', width: 15 },
+        { header: 'Tên', key: 'name', width: 30 },
+        { header: 'Ngày kích hoạt', key: 'activeDate', width: 30 },
+        { header: 'Loại thẻ', key: 'role', width: 15 },
+        { header: 'Trạng thái', key: 'status', width: 30 }
+    ];
+    try {
+        CardsModel.find()
+      .then(data => {
+        data.forEach(item => {
+          worksheet.addRow({
+            id: item.id,
+            name: item.full_name,
+            activeDate: item.activeAt,
+            role: item.role,
+            stasus: item.status
+          });
+        });
+        
+        // Lưu workbook ra file excel
+        const filename = 'cards.xlsx';
+        workbook.xlsx.writeFile(filename)
+          .then(() => {
+            console.log(`Excel file "${filename}" has been created`);
+            
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+      res.redirect('/card')
+    }
+    catch (error) {
+        res.render('card', {
+            error: error.message,
+            message: null,
+        })
+    }
+}
 module.exports = {
     indexCard: indexCard,
     addCards: addCards,
     newCards: newCards,
     deleteCard: deleteCard,
-    getRemoveCard: getRemoveCard
+    getRemoveCard: getRemoveCard,
+    exportEx: exportEx
 }
