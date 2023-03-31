@@ -1,6 +1,9 @@
 const CardsModel = require('../models/cards');
 const UsersModel = require('../models/users');
+const moment = require('moment');
 
+const currentDateTime = moment().format('YYYY-MM-DD HH:mm:ss');
+const now = new Date();
 
 const indexCard = async (req, res) => {
     const pagination = {
@@ -10,6 +13,7 @@ const indexCard = async (req, res) => {
     const noPage = (pagination.perPage * pagination.page) - pagination.perPage
     try {
         const cards = await CardsModel.find();
+        console.log(currentDateTime);
         // const countUsers = await UsersModel.countDocuments()
         res.render('card', {
             cards: cards,
@@ -52,9 +56,17 @@ const newCards = async (req, res) => {
             })
             const saveUser = await createCard.save();
             res.redirect('/card')
-            console.log("Thêm thành công")
         }
         else {
+            const updateUser = await CardsModel.findOneAndUpdate({
+                id: Card.id
+            }, {
+                // full_name: full_name,
+                // id: id,
+                // role: role,
+                // status: Card.status,
+                activeAt: currentDateTime,
+            })
             res.redirect('/card')
         }
     } catch (error) {

@@ -54,7 +54,7 @@ const newUser = async (req, res) => {
                 password: user.password,
                 role: user.role,
             })
-            const savrUser = await createUser.save()
+            const saveUser = await createUser.save()
             res.redirect('/account')
         }
         else {
@@ -78,7 +78,7 @@ const editUser = async (req, res) => {
     })
 }
 
-const updateProduct = async (req, res) => {
+const updateUser = async (req, res) => {
     const user = {
         full_name: req.body.full_name,
         user_name: req.body.username,
@@ -87,7 +87,7 @@ const updateProduct = async (req, res) => {
     }
     
     try {
-        const updateUser = await UsersModel.findByIdAndUpdate({
+        const update = await UsersModel.findByIdAndUpdate({
             _id: req.params.id
         }, {
             full_name: user.full_name,
@@ -111,5 +111,5 @@ module.exports = {
     addUser: addUser,
     newUser: newUser,
     editUser: editUser,
-    updateProduct: updateProduct
+    updateUser: updateUser
 }

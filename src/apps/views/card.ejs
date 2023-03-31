@@ -39,7 +39,6 @@
                 <div class="form-group1">
                     <label for="text" class="user-text">Họ Tên</label>
                     <input
-                        required
                         class="form-control1"
                         name="full_name"
                         type="text"
@@ -48,7 +47,6 @@
                 <div class="form-group1">
                     <label for="text" class="user-text">Ngày active</label>
                     <input
-                        required
                         class="form-control1"
                         name="active_date"
                         type="date"
@@ -57,7 +55,6 @@
                 <div class="form-group1">
                     <label for="text" class="user-text">Loại thẻ</label>
                     <input
-                        required
                         class="form-control1"
                         name="role"
                         type="text"
@@ -66,8 +63,8 @@
                 <div class="form-group1">
                     <label for="text" class="user-text">Trạng thái</label>
                     <select name="is_active" class="form-control1">
-                        <option value="0">Kích hoạt</option>
-                        <option value="1">Chưa kích hoạt</option>
+                        <option value="1">Kích hoạt</option>
+                        <option value="0">Chưa kích hoạt</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-add">
@@ -102,10 +99,25 @@
                     <% let i = 0 %> <% for ( let card of cards) {%>
                         <tr>
                             <td><%= ++i %></td>
+
                             <td><%=card.id%></td>
+
+                            <% if(card.full_name === ''){ %>
+                            <td>No</td>
+                            <%}%>
+                            <% if(card.full_name !== ''){ %>
                             <td><%=card.full_name%></td>
-                            <td><%=card.activeAt%></td>
-                            <td><%=card.role%></td>
+                            <%}%>
+
+                            <% if(card.status === false){ %>
+                            <td>No</td>
+                            <td>No</td>
+                            <%}%>
+                            <% if(card.status === true){ %>
+                                <td><%=card.activeAt%></td>
+                                <td><%=card.role%></td>
+                            <%}%>
+                            
                             <% if(card.status === true){ %>
                             <td>Kích hoạt</td>
                             <%}%>

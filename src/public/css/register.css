@@ -2,18 +2,16 @@
 	margin:0;
 	padding:0;
 	font-family: Inter;
-	font-size:13px;
 	color:#333;
+    box-sizing: border-box;
 }
-    
-body{
-	background:#E7ECF4;
-    width: 1440px;
-    height: 1240px;
-}	
+html {
+    font-size: 62.5%; /* tương đương 10px */
+    line-height: 1.6rem;
+}
+
 header {
     height: 468.81px;
-    position: relative;
 }
 .content {
     height: 771.19px;
@@ -22,105 +20,183 @@ header {
 .logo {
     width: 455px;
     height: 286.8px;
-    position: absolute;
-    top:120px;
-    left: 479px;
+    margin-top: 110px;
+    margin-left: 440px;
+}
+.form-group {
+    display: flex;
+    width: 900px;
+    justify-content: space-between;
+    margin-left: 100px;
+    margin-top: 50px;
 }
 .btn {
     border-radius: 20px;
     width: 280px;
     height: 100px;
     background-color: #58D8B9;
-    position: absolute;
-    top: 1090px;
-    left: 580px;
     font-weight: 700;
-    font-size: 32px;
+    font-size: 3.2rem;
+    margin-top: 40px;
+    margin-left: 530px;
 }
-.user-text{
-    position: absolute;
-    width: 161px;
-    height: 39px;
-    left: 152px;
-    top: 572px;
-
+label {
+    line-height: 8.2rem;
     font-weight: 700;
-    font-size: 32px;
+    font-size: 3.2rem;
     color: #FFFFFF;
 }
-.user-name {
-    position: absolute;
-    width: 161px;
-    height: 39px;
-    left: 152px;
-    top: 705px;
 
-    font-weight: 700;
-    font-size: 32px;
-    color: #FFFFFF;
-}
-.user-pass{
-    position: absolute;
-    width: 287px;
-    height: 39px;
-    left: 152px;
-    top: 834px;
-
-    font-weight: 700;
-    font-size: 32px;
-    color: #FFFFFF;
-}
-.user-re-pass{
-    position: absolute;
-    width: 287px;
-    height: 39px;
-    left: 152px;
-    top: 960px;
-
-    font-weight: 700;
-    font-size: 32px;
-    color: #FFFFFF;
-}
 .form-control {
     width: 568px;
     height: 85.26px;
 
     background: #FFFFFF;
     border-radius: 25px;
-    font-size: 32px;
-}
-.ns {
-    position: absolute;
-    left: 458px;
-    top: 552px;
-}
-.us{
-    position: absolute;
-    left: 458px;
-    top: 681px;
-}
-.ps {
-    position: absolute;
-    left: 458px;
-    top: 810px;
-}
-.re-ps {
-    position: absolute;
-    left: 458px;
-    top: 940px;
+    font-size: 3.2rem;
 }
 .alert-danger {
-    font-size:24px ;
+    font-size:2.4rem ;
     font-weight: 600;
     padding-left: 50px;
 }
 .alert-success {
-    font-size:24px ;
+    font-size:2.4rem ;
     font-weight: 600;
     padding-left: 50px;
 }
 .login-success {
     text-decoration: none;
-    font-size:24px ;
+    font-size:2.4rem ;
     font-weight: 600;
 }
+/* BREAK POINT */
+/*
+    PC >= 1024px
+    Tablet: >=740px & < 1024px
+    Mobile: <740px
+ */
+ 
+ /* Mobile and Tablet */
+ @media (max-width: 1023px) {
+    header {
+        height: 420px;
+    }
+    .content {
+        height: 760.19px;
+    }
+    .logo {
+        width: 380px;
+        height: 210px;
+        margin-top: 80px;
+        margin-left: 330px;
+    }
+    .form-group {
+        display: flex;
+        width: 760px;
+        justify-content: space-between;
+        margin-left: 60px;
+        margin-top: 50px;
+    }
+    .btn {
+        border-radius: 20px;
+        width: 220px;
+        height: 80px;
+        background-color: #58D8B9;
+        font-weight: 700;
+        font-size: 3rem;
+        margin-top: 40px;
+        margin-left: 380px;
+    }
+    label {
+        line-height: 6.4rem;
+        font-weight: 600;
+        font-size: 2.6rem;
+        color: #FFFFFF;
+    }
+    
+    .form-control {
+        width: 480px;
+        height: 60px;
+    
+        background: #FFFFFF;
+        border-radius: 25px;
+        font-size: 2.8rem;
+        font-weight: 600;
+    }
+    .alert-danger {
+        font-size:2.0rem ;
+        font-weight: 600;
+        padding-left: 50px;
+    }
+    .alert-success {
+        font-size:2.0rem ;
+        font-weight: 600;
+        padding-left: 50px;
+    }
+    .login-success {
+        text-decoration: none;
+        font-size:2.0rem ;
+        font-weight: 600;
+    }
+ }
+ 
+ /* Mobile */
+ @media (max-width: 739px) {
+    header {
+        height: 320px;
+    }
+    .content {
+        height: 460px;
+    }
+    .logo {
+        width: 260px;
+        height: 140px;
+        margin-top: 80px;
+        margin-left: 160px;
+    }
+    .form-group {
+        margin-left: 30px;
+        margin-top: 20px;
+        display: inline;
+    }
+    .btn {
+        border-radius: 10px;
+        width: 130px;
+        height: 50px;
+        background-color: #58D8B9;
+        font-weight: 600;
+        font-size: 2rem;
+        margin-top: 40px;
+        margin-left: 360px;
+    }
+    label {
+        line-height: 4rem;
+        font-weight: 600;
+        font-size: 2rem;
+    }
+    
+    .form-control {
+        width: 480px;
+        height: 30px;
+        margin-left: 30px;
+        border-radius: 6px;
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
+    .alert-danger {
+        font-size:1.8rem ;
+        font-weight: 500;
+        padding-left: 50px;
+    }
+    .alert-success {
+        font-size:1.8rem ;
+        font-weight: 500;
+        padding-left: 50px;
+    }
+    .login-success {
+        text-decoration: none;
+        font-size:1.8rem ;
+        font-weight: 500;
+    }
+ }

@@ -2,27 +2,24 @@
 	margin:0;
 	padding:0;
 	font-family: Inter;
-	font-size:13px;
 	color:#333;
-    /* width: 1440px; */
+    box-sizing: border-box;
 }
-    
-body{
-	background:#E7ECF4;
-    width: 1440px;
-    height: 1024px;
-}	
+html {
+    font-size: 62.5%; /* tương đương 10px */
+    line-height: 1.6rem;
+}
+
+.header {
+    width: 100%;
+    height: 450px;
+}
 #logo1 {
     width: 560px;
     height: 560px;
     position: absolute;
-    top: 232px;
-    left: 440px;
-}
-.header {
-    width: 100%;
-    height: 523px;
-    position: relative;
+    margin-top: 180px;
+    margin-left: 400px;
 }
 .content {
     width: 100%;
@@ -30,17 +27,11 @@ body{
     background-color: #318EE3;
 }
 .text {
-    width: 912px;
-    height: 58px;
-    position: absolute;
-    top: 843px;
-    left: 279px;
-
-    font-family: 'Inter';
-    font-style: normal;
+    text-align: center;
+    padding-top: 300px;
     font-weight: 700;
-    font-size: 48px;
-    line-height: 58px;
+    font-size: 4.8rem;
+    line-height: 5.8rem;
     color: #fff;
 }
 .list {
@@ -51,11 +42,67 @@ body{
 }
 .nav-item a{
     text-decoration: none;
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 700;
-    font-size: 32px;
-    line-height: 39px;
+    font-size: 3.2rem;
+    line-height: 3.9rem;
     /* identical to box height */
     color: #000000;
 }
+/* BREAK POINT */
+/*
+    PC >= 1024px
+    Tablet: >=740px & < 1024px
+    Mobile: <740px
+ */
+ 
+ /* Mobile and Tablet */
+ @media (max-width: 1023px) {
+    .header {
+        height: 430px;
+    }
+    #logo1 {
+        width: 420px;
+        height: 420px;
+        margin-top: 160px;
+        margin-left: 280px;
+    }
+    .content {
+        height: 480px;
+    }
+    .text {
+        padding-top: 240px;
+        font-size: 4.0rem;
+        line-height: 5.0rem;
+    }
+    
+    .nav-item a{
+        font-size: 2.8rem;
+        line-height: 3.4rem;
+    }
+ }
+ 
+ /* Mobile */
+ @media (max-width: 739px) {
+    .header {
+        height: 300px;
+    }
+    #logo1 {
+        width: 300px;
+        height: 300px;
+        margin-top: 160px;
+        margin-left: 90px;
+    }
+    .content {
+        height: 380px;
+    }
+    .text {
+        padding-top: 220px;
+        font-size: 2.6rem;
+        line-height: 4.0rem;
+    }
+    
+    .nav-item a{
+        font-size: 2.0rem;
+        line-height: 3.6rem;
+    }
+ }
