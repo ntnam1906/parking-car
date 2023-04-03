@@ -15,7 +15,7 @@ html {
 }
 .content {
     width: 100%;
-    height: 628px;
+    height: 410px;
     background-color: #318EE3;
 }
 a.control {
@@ -122,7 +122,7 @@ tbody tr td {
     width: 258px;
     height: 63px;
     position: absolute;
-    top: 924px;
+    top: 740px;
     left: 540px;
     text-decoration: none;
     font-weight: 700;
@@ -137,6 +137,12 @@ tbody tr td {
     background-color: #38cc22;
     text-decoration: none;
     color: #333;
+}
+.panel-footer {
+    font-size: 20px;
+    position: absolute;
+    left: 580px;
+    top: 650px;
 }
 /* BREAK POINT */
 /*
@@ -153,7 +159,7 @@ tbody tr td {
     }
     .content {
         width: 100%;
-        height: 560px;
+        height: 320px;
     }
     a.control {
         width: 100px;
@@ -222,14 +228,21 @@ tbody tr td {
     .export-ex {
         width: 210px;
         height: 50px;
-        top: 844px;
+        top: 670px;
         left: 370px;
         font-weight: 700;
         font-size: 2.6rem;
         border-radius: 20px;
         line-height: 5rem;
     }
+    .panel-footer {
+        font-size: 16px;
+        left: 400px;
+        top: 590px;
+    }
 }
+
+
  /* Mobile */
  @media (max-width: 739px) {
     .header {
@@ -306,11 +319,16 @@ tbody tr td {
     .export-ex {
         width: 140px;
         height: 30px;
-        top: 420px;
+        top: 380px;
         left: 170px;
         font-weight: 600;
         font-size: 1.6rem;
         border-radius: 20px;
         line-height: 3rem;
+    }
+    .panel-footer {
+        font-size: 12px;
+        left: 210px;
+        top: 330px;
     }
  }

@@ -6,17 +6,17 @@ const fs = require('fs');
 const indexUser = async (req, res) => {
     const pagination = {
         page: Number(req.query.page) || 1,
-        perPage: 10,
+        perPage: 5,
     }
     const noPage = (pagination.perPage * pagination.page) - pagination.perPage
     try {
-        const users = await UsersModel.find()
-        // const countUsers = await UsersModel.countDocuments()
+        const users = await UsersModel.find().skip(noPage).limit(pagination.perPage);
+        const countUsers = await UsersModel.countDocuments();
         res.render('account', {
             users: users,
-            // current: pagination.page,
-            // pages: Math.ceil(countUsers / pagination.perPage),
-            // namepage: "account"
+            current: pagination.page,
+            pages: Math.ceil(countUsers / pagination.perPage),
+            namepage: "account"
         })
     } catch (error) {
         console.log(error);

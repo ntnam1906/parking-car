@@ -2,28 +2,25 @@ const CardsModel = require('../models/cards');
 const UsersModel = require('../models/users');
 const moment = require('moment');
 const excel = require('exceljs');
-const fs = require('fs');
 
 const currentDateTime = moment().format('YYYY-MM-DD HH:mm:ss');
-const now = new Date();
 
 const indexCard = async (req, res) => {
     const pagination = {
         page: Number(req.query.page) || 1,
-        perPage: 10,
+        perPage: 5,
     }
     const noPage = (pagination.perPage * pagination.page) - pagination.perPage
     try {
-        const cards = await CardsModel.find();
-        console.log(currentDateTime);
-        // const countUsers = await UsersModel.countDocuments()
+        const cards = await CardsModel.find().skip(noPage).limit(pagination.perPage);
+        const countCards = await CardsModel.countDocuments()
         res.render('card', {
             cards: cards,
             error: null,
-            massage: null
-            // current: pagination.page,
-            // pages: Math.ceil(countUsers / pagination.perPage),
-            // namepage: "account"
+            massage: null,
+            current: pagination.page,
+            pages: Math.ceil(countCards / pagination.perPage),
+            namepage: "card"
         })
     } catch (error) {
         console.log(error);

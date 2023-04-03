@@ -1,0 +1,29 @@
+.panel-footer {
+    font-size: 20px;
+    position: absolute;
+    left: 560px;
+    top: 980px;
+}
+/* BREAK POINT */
+/*
+    PC >= 1024px
+    Tablet: >=740px & < 1024px
+    Mobile: <740px
+ */
+ /* Mobile and Tablet */
+ @media (max-width: 1023px) {
+    .panel-footer {
+        font-size: 20px;
+        left: 440px;
+        top: 930px;
+    }
+ }
+ 
+ /* Mobile */
+ @media (max-width: 739px) {
+    .panel-footer {
+        font-size: 12px;
+        left: 200px;
+        top: 560px;
+    }
+ }
