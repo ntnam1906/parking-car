@@ -102,12 +102,7 @@
 
                             <td><%=card.id%></td>
 
-                            <% if(card.full_name === ''){ %>
-                            <td>No</td>
-                            <%}%>
-                            <% if(card.full_name !== ''){ %>
                             <td><%=card.full_name%></td>
-                            <%}%>
 
                             <% if(card.status === false){ %>
                             <td>No</td>
@@ -115,8 +110,12 @@
                             <%}%>
                             <% if(card.status === true){ %>
                                 <td><%=card.activeAt%></td>
-                                <td><%=card.role%></td>
                             <%}%>
+                            
+                            <% if(card.status === true){ %>
+                                <td><%= card.role%></td>
+                            <%}%>
+                            
                             
                             <% if(card.status === true){ %>
                             <td>Kích hoạt</td>

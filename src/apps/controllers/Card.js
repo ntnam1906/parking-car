@@ -49,15 +49,41 @@ const newCards = async (req, res) => {
     try {
         const checkID = await CardsModel.findOne({id : Card.id})
         if(!checkID){
-            const createCard = new CardsModel({
-                full_name: Card.full_name,
-                id: Card.id,
-                activeAt: Card.activeAt,
-                role: Card.role,
-                status: Card.status
-            })
-            const saveUser = await createCard.save();
-            res.redirect('/card')
+            if(Card.full_name === '') {
+                const createCard = new CardsModel({
+                    full_name: "Khách vãng lai",
+                    id: Card.id,
+                    activeAt: currentDateTime,
+                    role: "Khách hàng",
+                    status: Card.status
+                })
+                const saveCard = await createCard.save();
+                res.redirect('/card')
+            }
+            else if(Card.full_name !== ''){
+                if(Card.activeAt === '') {
+                    const createCard = new CardsModel({
+                        full_name: Card.full_name,
+                        id: Card.id,
+                        activeAt: currentDateTime,
+                        role: Card.role,
+                        status: Card.status
+                    })
+                    const saveCard = await createCard.save();
+                    res.redirect('/card')
+                }
+                else {
+                    const createCard = new CardsModel({
+                        full_name: Card.full_name,
+                        id: Card.id,
+                        activeAt: Card.activeAt,
+                        role: Card.role,
+                        status: Card.status
+                    })
+                    const saveCard = await createCard.save();
+                    res.redirect('/card')
+                }
+            }
         }
         else {
             const updateUser = await CardsModel.findOneAndUpdate({
@@ -66,7 +92,7 @@ const newCards = async (req, res) => {
                 // full_name: full_name,
                 // id: id,
                 // role: role,
-                // status: Card.status,
+                status: Card.status,
                 activeAt: currentDateTime,
             })
             res.redirect('/card')
@@ -123,7 +149,7 @@ const exportEx = async (req, res) => {
             name: item.full_name,
             activeDate: item.activeAt,
             role: item.role,
-            stasus: item.status
+            status: item.status.toString()
           });
         });
         

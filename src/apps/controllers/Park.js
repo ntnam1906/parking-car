@@ -48,7 +48,7 @@ const newPark = async (req, res) => {
         const check = await ParksModel.findOne({name: park.name})
         if(!check) {
             const createPark = new ParksModel({
-                ame: park.name,
+                name: park.name,
                 address: park.address,
             })
             const savePark = await createPark.save()
