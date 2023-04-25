@@ -6,7 +6,16 @@ const ParkController = require('../apps/controllers/Park');
 const CardController = require('../apps/controllers/Card');
 const path = require('path');
 const Control = require('../apps/controllers/Control');
-
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+      cb(null, 'uploads/') // đường dẫn lưu trữ ảnh
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + '-' + file.originalname )
+    }
+  })
+const upload = multer({ storage: storage })
 //GET
 
 router.get('/', Control.index)
@@ -55,5 +64,7 @@ router.post('/parking-list/edit/:id', ParkController.updatePark)
 
 router.post('/card/add-card', CardController.newCards)
 router.post('/card/remove-card', CardController.deleteCard)
+////Test API
 
+router.post('/test', upload.single('thumbnail'), CardController.checkCard)
 module.exports = router

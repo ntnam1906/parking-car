@@ -173,11 +173,38 @@ const exportEx = async (req, res) => {
         })
     }
 }
+
+const checkCard = async(req, res) => {
+    const cardId = req.body.cardId
+    const parkingId = req.body.parkingId
+    const imagePath = req.file.path
+    if(cardId && parkingId && imagePath) {
+        return res.status(200).json({
+            message: "ok"
+        })
+    }
+    if(!cardId) {
+        return res.status(500).json({
+            message: "Thiếu id card"
+        })
+    }
+    if(!parkingId) {
+        return res.status(500).json({
+            message: "Thiếu id bãi gửi xe"
+        })
+    }
+    if(!imagePath) {
+        return res.status(500).json({
+            message: "Thiếu ảnh"
+        })
+    }
+}
 module.exports = {
     indexCard: indexCard,
     addCards: addCards,
     newCards: newCards,
     deleteCard: deleteCard,
     getRemoveCard: getRemoveCard,
-    exportEx: exportEx
+    exportEx: exportEx,
+    checkCard: checkCard
 }

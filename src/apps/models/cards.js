@@ -2,6 +2,10 @@ const mongoose = require('../../common/database')();
 const moment = require('moment');
 const Schema = mongoose.Schema;
 const cardSchema = new Schema({
+      thumbnail: {
+        data: Buffer,
+        contentType: String
+    },
     full_name: String,
     id: String,
     role: String,
