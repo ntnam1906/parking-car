@@ -4,6 +4,10 @@
     left: 560px;
     top: 980px;
 }
+.panel-footer.panel1 {
+    left: 560px;
+    top: 1200px;
+}
 /* BREAK POINT */
 /*
     PC >= 1024px
@@ -17,6 +21,10 @@
         left: 440px;
         top: 930px;
     }
+    .panel-footer.panel1 {
+        left: 440px;
+        top: 1000px;
+    }
  }
  
  /* Mobile */
@@ -25,5 +33,9 @@
         font-size: 12px;
         left: 200px;
         top: 560px;
+    }
+    .panel-footer.panel1 {
+        left: 200px;
+        top: 650px;
     }
  }

@@ -45,7 +45,6 @@ const newUser = async (req, res) => {
         full_name: req.body.full_name,
         user_name: req.body.username,
         password: req.body.pass,
-        role: req.body.role,
     }
     try {
         const check = await UsersModel.findOne({user_name: user.user_name})
@@ -54,7 +53,6 @@ const newUser = async (req, res) => {
                 full_name: user.full_name,
                 user_name: user.user_name,
                 password: user.password,
-                role: user.role,
             })
             const saveUser = await createUser.save()
             res.redirect('/account')
@@ -95,7 +93,6 @@ const updateUser = async (req, res) => {
             full_name: user.full_name,
             user_name: user.user_name,
             password: user.password,
-            role: user.role,
         })
        
         res.redirect('/account')
@@ -117,7 +114,6 @@ const exportEx = async (req, res) => {
         { header: 'Tên', key: 'name', width: 30 },
         { header: 'User_name', key: 'username', width: 50 },
         { header: 'Mật khẩu', key: 'password', width: 15 },
-        { header: 'Vai trò', key: 'role', width: 15 }
     ];
     try {
         UsersModel.find()
@@ -127,7 +123,6 @@ const exportEx = async (req, res) => {
             name: item.full_name,
             username: item.user_name,
             password: item.password,
-            role: item.role
           });
         });
         

@@ -8,6 +8,7 @@ const session = require('express-session');
 const cors = require('cors');
 
 app.use('/static', express.static(config.get('app.static_folder')))
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.set('views', config.get('app.view_folder'))
 app.set('view engine', config.get('app.view_engine'))
 app.use(bodyParser.urlencoded({extended: true}))

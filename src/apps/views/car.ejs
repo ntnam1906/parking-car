@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/blob-polyfill/2.0.20171115/Blob.min.js"></script>
         <%- include('head'); -%>
 		<link rel="stylesheet" href="/static/css/car.css" />
 	</head>
@@ -26,31 +27,45 @@
             <table data-toolbar="#toolbar" data-toggle="table">
                 <thead>
                     <tr>
-                        <th data-sortable="true">Hình ảnh</th>
-                        <th data-sortable="true">Tên bãi xe</th>
-                        <th data-sortable="true">Mã Thẻ</th>
+                        <th data-sortable="true">Hình ảnh vào</th>
+                        <th data-sortable="true">Hình ảnh ra</th>
+                        <th data-sortable="true">Tên cơ sở</th>
+                        <th data-sortable="true">Tên thẻ</th>
                         <th data-sortable="true">Thời gian vào</th>
                         <th data-sortable="true">Thời gian ra</th>
+                        <th data-sortable="true">Loại xe</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>111</td>
-                        <td>Lac Hong</td>
-                        <td>CS1</td>
-                    </tr>
-                    <tr>
-                        <td>123</td>
-                        <td>Dong Nai</td>
-                        <td>CS2</td>
-                    </tr>
+                    <% vehicles.forEach(function(vehicle) { %>
+                        <tr>
+                            <td>
+                                <img src="<%= vehicle.image_in%>" class="imgs"/>
+                            </td>
+
+                            <td>
+                                <img src="<%= vehicle.image_out%>" class="imgs" alt="Ảnh ra"/>
+                            </td>
+
+                            <td><%= vehicle.parking_id.address %></td>      
+                            
+                            <td><%= vehicle.card_id.full_name %></td>
+                        
+                            <td><%= vehicle.timeIn %></td>
+
+                            <td><%= vehicle.timeOut %></td>
+
+                            <td>Xe máy</td>
+                        </tr>
+                        <% }); %>
+                    
                 </tbody>
             </table>
         </div>
-
-        <a href="" class="export-ex">
+        <%- include('pagination-car'); -%>
+        <!-- <a href="" class="export-ex">
             Xuất file Excel
-        </a>
+        </a> -->
         </div>
     </body>
 </html>

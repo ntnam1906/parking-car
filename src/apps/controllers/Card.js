@@ -3,7 +3,6 @@ const UsersModel = require('../models/users');
 const moment = require('moment');
 const excel = require('exceljs');
 
-const currentDateTime = moment().format('YYYY-MM-DD HH:mm:ss');
 
 const indexCard = async (req, res) => {
     const pagination = {
@@ -39,60 +38,52 @@ const newCards = async (req, res) => {
     const Card = {
         id: req.body.id_,
         full_name: req.body.full_name,
-        activeAt: req.body.active_date,
         role: req.body.role,
         status: req.body.is_active
     }
     try {
         const checkID = await CardsModel.findOne({id : Card.id})
         if(!checkID){
-            if(Card.full_name === '') {
-                const createCard = new CardsModel({
-                    full_name: "Khách vãng lai",
-                    id: Card.id,
-                    activeAt: currentDateTime,
-                    role: "Khách hàng",
-                    status: Card.status
-                })
-                const saveCard = await createCard.save();
-                res.redirect('/card')
-            }
-            else if(Card.full_name !== ''){
-                if(Card.activeAt === '') {
-                    const createCard = new CardsModel({
-                        full_name: Card.full_name,
-                        id: Card.id,
-                        activeAt: currentDateTime,
-                        role: Card.role,
-                        status: Card.status
-                    })
-                    const saveCard = await createCard.save();
-                    res.redirect('/card')
-                }
-                else {
-                    const createCard = new CardsModel({
-                        full_name: Card.full_name,
-                        id: Card.id,
-                        activeAt: Card.activeAt,
-                        role: Card.role,
-                        status: Card.status
-                    })
-                    const saveCard = await createCard.save();
-                    res.redirect('/card')
-                }
-            }
+            const createCard = new CardsModel({
+                full_name: "Khách vãng lai",
+                id: Card.id,
+                activeAt: null,
+                role: "Khách hàng",
+                status: false
+            })
+            const saveCard = await createCard.save();
+            res.redirect('/card')
+
         }
         else {
-            const updateUser = await CardsModel.findOneAndUpdate({
-                id: Card.id
-            }, {
-                // full_name: full_name,
-                // id: id,
-                // role: role,
-                status: Card.status,
-                activeAt: currentDateTime,
-            })
-            res.redirect('/card')
+            const currentDateTime = moment().format('YYYY-MM-DD HH:mm:ss');
+
+            if(Card.status === "0") {
+                const updateUser = await CardsModel.findOneAndUpdate({
+                    id: Card.id
+                }, {
+                    full_name: Card.full_name,
+                    role: Card.role,
+                    status: Card.status,
+                    activeAt: null,
+                })
+                if(updateUser) {
+                    res.redirect('/card')
+                }
+            }
+            else {
+                const updateUser = await CardsModel.findOneAndUpdate({
+                    id: Card.id
+                }, {
+                    full_name: Card.full_name,
+                    role: Card.role,
+                    status: Card.status,
+                    activeAt: currentDateTime,
+                })
+                if(updateUser) {
+                    res.redirect('/card')
+                }
+            }
         }
     } catch (error) {
         return res.render('card', {
@@ -179,24 +170,16 @@ const checkCard = async(req, res) => {
     const parkingId = req.body.parkingId
     const imagePath = req.file.path
     if(cardId && parkingId && imagePath) {
-        return res.status(200).json({
-            message: "ok"
-        })
+       console.log("OK")
     }
     if(!cardId) {
-        return res.status(500).json({
-            message: "Thiếu id card"
-        })
+        console.log("thiếu ID card")
     }
     if(!parkingId) {
-        return res.status(500).json({
-            message: "Thiếu id bãi gửi xe"
-        })
+        console.log("thiếu ID parking")
     }
     if(!imagePath) {
-        return res.status(500).json({
-            message: "Thiếu ảnh"
-        })
+        console.log("Thiếu ảnh")
     }
 }
 module.exports = {

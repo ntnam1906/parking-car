@@ -2,15 +2,12 @@ const mongoose = require('../../common/database')();
 const moment = require('moment');
 const Schema = mongoose.Schema;
 const cardSchema = new Schema({
-      thumbnail: {
-        data: Buffer,
-        contentType: String
-    },
-    full_name: String,
-    id: String,
-    role: String,
+    full_name: {type: String, required: true},
+    id: {type: String, required: true},
+    role: {type: String, required: true},
     status: Boolean,
-    activeAt: {type: Date, default: moment().format('YYYY-MM-DD HH:mm:ss')}
+    activeAt: {type: Date, default: moment().format('YYYY-MM-DD HH:mm:ss')},
+    is_parking: {type: Boolean, default: false}
 }, {
     timestamps: true,
     toJSON: { getters: true }

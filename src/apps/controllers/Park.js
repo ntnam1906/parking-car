@@ -41,13 +41,17 @@ const addPark = async (req, res) => {
 }
 const newPark = async (req, res) => {
     const park = {
+        parkId: req.body.id,
         name: req.body.name,
         address: req.body.address,
     }
     try {
-        const check = await ParksModel.findOne({name: park.name})
-        if(!check) {
+        const checkName = await ParksModel.findOne({name: park.name})
+        const checkCoSo = await ParksModel.findOne({address: park.address})
+        const checkId = await ParksModel.findOne({parkId: park.parkId})
+        if(!checkName && !checkCoSo && !checkId) {
             const createPark = new ParksModel({
+                parkId: park.parkId,
                 name: park.name,
                 address: park.address,
             })
@@ -77,6 +81,7 @@ const editPark = async (req, res) => {
 
 const updatePark = async (req, res) => {
     const park = {
+        parkId: req.body.id,
         name: req.body.name,
         address: req.body.address,
     }
@@ -85,6 +90,7 @@ const updatePark = async (req, res) => {
         const update = await ParksModel.findByIdAndUpdate({
             _id: req.params.id
         }, {
+            parkId: park.parkId,
             name: park.name,
             address: park.address,
         })
@@ -106,6 +112,7 @@ const exportEx = async (req, res) => {
     // Tạo worksheet mới
     const worksheet = workbook.addWorksheet('Data');
     worksheet.columns = [
+        { header: 'ID', key: 'id', width: 30 },
         { header: 'Name', key: 'name', width: 30 },
         { header: 'Address', key: 'address', width: 50 }
     ];
@@ -114,6 +121,7 @@ const exportEx = async (req, res) => {
       .then(data => {
         data.forEach(item => {
           worksheet.addRow({
+            id: item.parkId,
             name: item.name,
             address: item.address
           });

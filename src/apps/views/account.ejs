@@ -34,7 +34,6 @@
                         <th data-sortable="true">Họ và Tên</th>
                         <th data-sortable="true">SĐT</th>
                         <th data-sortable="true">Địa chỉ</th>
-                        <th data-sortable="true">Loại User</th>
                         <th data-sortable="true">Sửa</th>
                         <th data-sortable="true">Xóa</th>
                     </tr>
@@ -48,9 +47,7 @@
                             <td>
                                 Bien Hoa, Dong Nai
                             </td>
-                            <td>
-                                <%= user.role %>
-                            </td>
+                            
                             <td><a href="/account/edit/<%= user._id%>" class="action">Edit</a></td>
                             <td><a href="/account/delete/<%= user._id%>" class="action">Delete</a></td>
                         </tr>

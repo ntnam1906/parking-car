@@ -29,6 +29,7 @@
                 <thead>
                     <tr>
                         <th data-sortable="true">STT</th>
+                        <th data-sortable="true">ID</th>
                         <th data-sortable="true">Tên bãi xe</th>
                         <th data-sortable="true">Tên vị trí</th>
                         <th data-sortable="true">Sửa</th>
@@ -39,6 +40,7 @@
                     <% let i = 0 %> <% for ( let park of park_list) {%>
                         <tr>
                             <td><%= ++i %></td>
+                            <td><%=park.parkId%></td>
                             <td><%=park.name%></td>
                             <td><%=park.address%></td>
                             <td><a href="/parking-list/edit/<%= park._id%>" class="action">Edit</a></td>

@@ -45,14 +45,6 @@
                     />
                 </div>
                 <div class="form-group1">
-                    <label for="text" class="user-text">Ngày active</label>
-                    <input
-                        class="form-control1"
-                        name="active_date"
-                        type="date"
-                    />
-                </div>
-                <div class="form-group1">
                     <label for="text" class="user-text">Loại thẻ</label>
                     <input
                         class="form-control1"
@@ -104,17 +96,13 @@
 
                             <td><%=card.full_name%></td>
 
-                            <% if(card.status === false){ %>
-                            <td>No</td>
-                            <td>No</td>
-                            <%}%>
-                            <% if(card.status === true){ %>
+                            <% if(card.activeAt !== null){ %>
                                 <td><%=card.activeAt%></td>
                             <%}%>
                             
-                            <% if(card.status === true){ %>
-                                <td><%= card.role%></td>
-                            <%}%>
+                            
+                            <td><%= card.role%></td>
+                        
                             
                             
                             <% if(card.status === true){ %>

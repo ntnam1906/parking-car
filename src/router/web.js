@@ -4,12 +4,13 @@ const AuthController = require('../apps/controllers/Auth');
 const UserController = require('../apps/controllers/User');
 const ParkController = require('../apps/controllers/Park');
 const CardController = require('../apps/controllers/Card');
+const VehicleController = require('../apps/controllers/VehicleManagement')
 const path = require('path');
 const Control = require('../apps/controllers/Control');
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-      cb(null, 'uploads/') // đường dẫn lưu trữ ảnh
+      cb(null, path.join(__dirname, '../apps/uploads')) // đường dẫn lưu trữ ảnh
     },
     filename: function (req, file, cb) {
       cb(null, Date.now() + '-' + file.originalname )
@@ -42,15 +43,7 @@ router.get('/card/add-card', CardController.addCards)
 router.get('/card/remove-card', CardController.getRemoveCard)
 router.get('/card/export', CardController.exportEx)
 
-router.get('/car', (res, req) => {
-    if(loggedIn) {
-        req.render('car');
-    }
-    else {
-        req.redirect('/login')
-    }
-    
-  })
+router.get('/car', VehicleController.indexVehicle)
 
 //POST
 router.post('/login', AuthController.postLogin)
@@ -64,7 +57,10 @@ router.post('/parking-list/edit/:id', ParkController.updatePark)
 
 router.post('/card/add-card', CardController.newCards)
 router.post('/card/remove-card', CardController.deleteCard)
-////Test API
 
-router.post('/test', upload.single('thumbnail'), CardController.checkCard)
+////Post API
+router.post('/postApi', upload.single('image'), VehicleController.checkApi)
+
+
+
 module.exports = router
