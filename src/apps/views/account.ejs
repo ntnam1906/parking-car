@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="/static/css/account.css" />
 	</head>
     <body>
+        <%- include('logout'); -%>
         <header class="header">
         </header>
         <div class="content">
@@ -31,9 +32,8 @@
                 <thead>
                     <tr>
                         <th data-sortable="true">STT</th>
+                        <th data-sortable="true">Tên đăng nhập</th>
                         <th data-sortable="true">Họ và Tên</th>
-                        <th data-sortable="true">SĐT</th>
-                        <th data-sortable="true">Địa chỉ</th>
                         <th data-sortable="true">Sửa</th>
                         <th data-sortable="true">Xóa</th>
                     </tr>
@@ -42,12 +42,8 @@
                     <% let i = 0 %> <% for ( let user of users) {%>
                         <tr>
                             <td><%= ++i %></td>
+                            <td><%=user.user_name%></td>
                             <td><%=user.full_name%></td>
-                            <td>0123456789</td>
-                            <td>
-                                Bien Hoa, Dong Nai
-                            </td>
-                            
                             <td><a href="/account/edit/<%= user._id%>" class="action">Edit</a></td>
                             <td><a href="/account/delete/<%= user._id%>" class="action">Delete</a></td>
                         </tr>

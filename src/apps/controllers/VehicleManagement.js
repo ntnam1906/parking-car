@@ -69,7 +69,7 @@ const checkApi = async(req, res) => {
                     const currentDateTime = moment().format('YYYY-MM-DD HH:mm:ss');
 
                     const vehicle = await VehiclesModel.create({
-                        image_in: `${req.file.filename}`,
+                        image_in: `/uploads/${req.file.filename}`,
                         image_out: null,
                         parking_id: park._id,
                         card_id: card._id,
