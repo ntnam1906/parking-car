@@ -142,6 +142,15 @@ tbody tr td {
     width: 120px;
     height: 144px;
 }
+#filter-address {
+    position: absolute;
+    top: 330px;
+    left: 60px;
+}
+#address-filter {
+    padding: 5px;
+    font-size: 14px;
+}
 /* BREAK POINT */
 /*
     PC >= 1024px
@@ -237,6 +246,14 @@ tbody tr td {
         width: 90px;
         height: 114px;
     }
+    #filter-address {
+        top: 340px;
+        left: 60px;
+    }
+    #address-filter {
+        padding: 4px;
+        font-size: 13px;
+    }
 }
  /* Mobile */
  @media (max-width: 739px) {
@@ -324,5 +341,13 @@ tbody tr td {
     .imgs {
         width: 60px;
         height: 80px;
+    }
+    #filter-address {
+        top: 170px;
+        left: 14px;
+    }
+    #address-filter {
+        padding: 2px;
+        font-size: 11px;
     }
  }

@@ -5,6 +5,7 @@ const UserController = require('../apps/controllers/User');
 const ParkController = require('../apps/controllers/Park');
 const CardController = require('../apps/controllers/Card');
 const VehicleController = require('../apps/controllers/VehicleManagement')
+const DeviceController = require('../apps/controllers/Device')
 const path = require('path');
 const Control = require('../apps/controllers/Control');
 const multer = require('multer');
@@ -45,6 +46,12 @@ router.get('/card/export', CardController.exportEx)
 
 router.get('/car', VehicleController.indexVehicle)
 
+router.get('/device', DeviceController.indexDevices)
+router.get('/device/add', DeviceController.addDevice)
+router.get('/device/delete/:id', DeviceController.deleteDevice)
+router.get('/device/edit/:id', DeviceController.editDevice)
+router.get('/device/export', DeviceController.exportEx)
+
 //POST
 router.post('/login', AuthController.postLogin)
 router.post('/register', AuthController.postRegister)
@@ -58,6 +65,8 @@ router.post('/parking-list/edit/:id', ParkController.updatePark)
 router.post('/card/add-card', CardController.newCards)
 router.post('/card/remove-card', CardController.deleteCard)
 
+router.post('/device/add', DeviceController.newDevice)
+router.post('/device/edit/:id', DeviceController.updateDevice)
 ////Post API
 router.post('/postApi', upload.single('image'), VehicleController.checkApi)
 

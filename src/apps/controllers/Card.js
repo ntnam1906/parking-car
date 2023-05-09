@@ -39,7 +39,8 @@ const newCards = async (req, res) => {
         id: req.body.id_,
         full_name: req.body.full_name,
         role: req.body.role,
-        status: req.body.is_active
+        status: req.body.is_active,
+        license: req.body.license
     }
     try {
         const checkID = await CardsModel.findOne({id : Card.id})
@@ -49,6 +50,7 @@ const newCards = async (req, res) => {
                 id: Card.id,
                 activeAt: null,
                 role: "Khách hàng",
+                license: null,
                 status: false
             })
             const saveCard = await createCard.save();
@@ -65,6 +67,7 @@ const newCards = async (req, res) => {
                     full_name: Card.full_name,
                     role: Card.role,
                     status: Card.status,
+                    license: Card.license,
                     activeAt: null,
                 })
                 if(updateUser) {
@@ -79,6 +82,7 @@ const newCards = async (req, res) => {
                     role: Card.role,
                     status: Card.status,
                     activeAt: currentDateTime,
+                    license: Card.license
                 })
                 if(updateUser) {
                     res.redirect('/card')

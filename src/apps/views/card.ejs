@@ -53,6 +53,14 @@
                     />
                 </div>
                 <div class="form-group1">
+                    <label for="text" class="user-text">Biển số xe</label>
+                    <input
+                        class="form-control1"
+                        name="license"
+                        type="text"
+                    />
+                </div>
+                <div class="form-group1">
                     <label for="text" class="user-text">Trạng thái</label>
                     <select name="is_active" class="form-control1">
                         <option value="1">Kích hoạt</option>
@@ -83,6 +91,7 @@
                         <th data-sortable="true">Mã thẻ</th>
                         <th data-sortable="true">Họ và tên</th>
                         <th data-sortable="true">Ngày Active</th>
+                        <th data-sortable="true">Biển số xe</th>
                         <th data-sortable="true">Loại thẻ</th>
                         <th data-sortable="true">Trạng thái</th>
                     </tr>
@@ -100,6 +109,7 @@
                                 <td><%=card.activeAt%></td>
                             <%}%>
                             
+                            <td><%= card.license%></td>
                             
                             <td><%= card.role%></td>
                         
